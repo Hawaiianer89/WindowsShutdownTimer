@@ -45,30 +45,29 @@ public class Main extends Application {
         // Style ändern:	 - Schriftgröße; 	  - Fett gedruckt		 - SchriftFarbe
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #E6EAF2;");
         
- // -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -
+// -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -
         
         // Label für Text neben dem Textfeld erstellen:
         Label minutenLabel = new Label ("Minuten");
         minutenLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #E6EAF2");
         
-        // Textfeld für MinutenEingabe
+   
+        // Textfeld für MinutenEingabe:
         TextField minutenEingabe = new TextField();    
-        
         // Breite des Eingabefeldes:
         minutenEingabe.setMaxWidth(100);
-        
         // Style ändern:		 - Schriftgröße		  - Hintergrundfarbe			 - TextFarbe 
         minutenEingabe.setStyle("-fx-font-size: 12px; -fx-background-color: #3A4459; -fx-text-fill: #E6EAF2;");
-        
         // Schrift mittig auslegen:
         minutenEingabe.setAlignment(Pos.CENTER);
+        
         
         // Label und Textfeld in HBox packen:
         VBox minutenVbox = new VBox(2);
         minutenVbox.setAlignment(Pos.CENTER);
-        
         minutenVbox.setStyle("-fx-background-color: #2B3345;");
         minutenVbox.setMaxWidth(100);
+        
         
         // Elemente der Hbox hinzufügen:
         minutenVbox.getChildren().addAll(minutenEingabe, minutenLabel); 
@@ -79,23 +78,23 @@ public class Main extends Application {
         Label uhrzeitLabel = new Label ("Uhr");
         uhrzeitLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #E6EAF2");
         
+        
         // Textfeld für Uhrzeit:
         TextField uhrzeitEingabe = new TextField();
-        
         // Breite des Eingabefeldes:
         uhrzeitEingabe.setMaxWidth(100);
-        
         // Schriftgröße + Schriftfarbe für Zeiteingabe:
         uhrzeitEingabe.setStyle("-fx-font-size: 12px; -fx-background-color: #3A4459; -fx-text-fill: #E6EAF2;");
-        
         // Schrift mittig auslegen:
         uhrzeitEingabe.setAlignment(Pos.CENTER);
+        
         
         // Label und Textfeld in HBox packen:
         VBox uhrzeitVbox = new VBox(2);
         uhrzeitVbox.setAlignment(Pos.CENTER);
         uhrzeitVbox.setStyle("-fx-background-color: #2B3345;");
         uhrzeitVbox.setMaxWidth(100);
+        
         
         // Elemente der Hbox hinzufügen:
         uhrzeitVbox.getChildren().addAll(uhrzeitEingabe, uhrzeitLabel); 
@@ -106,6 +105,8 @@ public class Main extends Application {
         Label countdownAnzeigen = new Label("");
         // Style ändern:	 		- Schriftgröße; 	 - Fett gedruckt;
         countdownAnzeigen.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #4FC3F7;");
+        
+        
         // nicht Anzeigen:
         countdownAnzeigen.setVisible(false);
         countdownAnzeigen.setManaged(false);
@@ -122,6 +123,7 @@ public class Main extends Application {
         
         Button abbruchBtn = new Button("Abbrechen");
         abbruchBtn.setPrefSize(100, 20);
+        
         
         // vorerst nicht benötigte Buttons ausblenden:
         pauseBtn.setVisible(false);
@@ -174,6 +176,7 @@ public class Main extends Application {
                 sendeShutDown();
             }
 	            
+
         }));
         // Timeline unendlich laufen lassen -> bis gestoppt wird:
         zeitLeiste.setCycleCount(Timeline.INDEFINITE);
@@ -234,6 +237,7 @@ public class Main extends Application {
 		                uhrzeitVbox.setVisible(false);
 		                uhrzeitVbox.setManaged(false);
 		                
+		                // TextLabel sperren/freigeben:
 		                titleLabel.setVisible(false);
 		                titleLabel.setManaged(false);
 		                
@@ -289,6 +293,7 @@ public class Main extends Application {
                 	// between() gibt immer ein Long zurück
                 	long sekundenBisShutdown = ChronoUnit.SECONDS.between(aktuelleUhrzeit, shutdownUhrzeit);
                 	
+                	
                 	// Wenn Sekunden <= 0 -> neuen Tag dazu rechnen -> Shutdwon nach 00:00 Uhr:
                   	if (sekundenBisShutdown <=0) {
                 		sekundenBisShutdown += 86400;
@@ -314,6 +319,7 @@ public class Main extends Application {
 	                uhrzeitVbox.setVisible(false);
 	                uhrzeitVbox.setManaged(false);
 	                
+	                // TextLabel sperren/freigeben:
 	                titleLabel.setVisible(false);
 	                titleLabel.setManaged(false);
 	                
@@ -327,6 +333,7 @@ public class Main extends Application {
 	                // Countdown anzeigen:
 	                countdownAnzeigen.setVisible(true);
 	                countdownAnzeigen.setManaged(true);
+	                
 	                zeitLeiste.play();
 
                 } catch (Exception f) {
@@ -451,6 +458,14 @@ public class Main extends Application {
     
 //=======================================================================================================================
 
+//     _____ _           _   _____                        __  __      _   _               _        
+//    / ____| |         | | |  __ \                      |  \/  |    | | | |             | |     _ 
+//   | (___ | |__  _   _| |_| |  | | _____      ___ __   | \  / | ___| |_| |__   ___   __| | ___(_)
+//    \___ \| '_ \| | | | __| |  | |/ _ \ \ /\ / / '_ \  | |\/| |/ _ \ __| '_ \ / _ \ / _` |/ _ \  
+//    ____) | | | | |_| | |_| |__| | (_) \ V  V /| | | | | |  | |  __/ |_| | | | (_) | (_| |  __/_ 
+//   |_____/|_| |_|\__,_|\__|_____/ \___/ \_/\_/ |_| |_| |_|  |_|\___|\__|_| |_|\___/ \__,_|\___(_)
+                                                                                                 
+    
     // Methode wenn Countdown 0 erreicht:
     // Java schickt Befehl direkt an Eingabeaufforderung/Console/Terminal:
     private void sendeShutDown() {
