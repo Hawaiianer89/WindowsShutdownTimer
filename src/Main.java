@@ -202,7 +202,7 @@ public class Main extends Application {
 //     | |\/| | | ' \ || |  _/ -_) ' \ _ 
 //     |_|  |_|_|_||_\_,_|\__\___|_||_(_)
         
-        	startBtn.setOnAction(e -> {	                                    
+        	startBtn.setOnAction(aktion -> {	                                    
         	// .trim()	-> entfernt leerzeichen am Anfang des Textes
         	if (!minutenEingabe.getText().trim().isEmpty() && uhrzeitEingabe.getText().trim().isEmpty()) {
         		
@@ -366,7 +366,7 @@ public class Main extends Application {
 //       / __ |/ _ \/ _ \/ __/ // / __/ _ \/___/ _  / // / __/ __/ _ \/ _ \_   
 //      /_/ |_/_.__/_.__/_/  \_,_/\__/_//_/   /____/\_,_/\__/\__/\___/_//_(_)  
                                                                              
-        abbruchBtn.setOnAction(e -> {
+        abbruchBtn.setOnAction(aktion -> {
             zeitLeiste.stop();
             restZeitSekunden = 0;
             
@@ -408,7 +408,7 @@ public class Main extends Application {
 //       / ___/ _ `/ // (_-</ -_)___/ _  / // / __/ __/ _ \/ _ \_   
 //      /_/   \_,_/\_,_/___/\__/   /____/\_,_/\__/\__/\___/_//_(_)  
 
-        pauseBtn.setOnAction(e -> {        	
+        pauseBtn.setOnAction(aktion -> {        	
         	// Buttons sperren/freigeben:
         	if (pauseBtn.getText().equals("Pause")) {
             	zeitLeiste.pause();
@@ -517,3 +517,4 @@ public class Main extends Application {
 
 	}
 }
+
